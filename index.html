@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- https://getbootstrap.com/docs/4.0/getting-started/introduction/ -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+
+    <title>todo-list</title>
+  </head>
+
+  <body>
+    <div class="container" style="padding: 200px">
+      <div class="card container_card">
+        <div class="card-header title">TODO-LIST</div>
+
+        <ul class="list-group list-group-flush" id="idList">
+          <li class="list-group-item">
+            <div class="form-group"> 
+              <input
+                class="form-control"
+                id="idTextTodoList"
+                placeholder="Favor entrar com sua tarefa"
+
+              />
+          </li>
+        </ul>
+    </div>
+  
+
+    <script>
+
+      var input = document.getElementById("idTextTodoList");
+      input.addEventListener("keyup", function (event) {
+        if (event.keyCode === 13) {
+          event.preventDefault();
+          input.value && createList(input.value)
+          input.value = "";
+        }
+      });
+
+      function createList(textInput) { 
+        var deleteButton=document.createElement("button")
+        deleteButton.classList.add("btn","btn-danger")
+        deleteButton.innerHTML="Delete"
+        deleteButton.addEventListener("click",()=>deleteTask(event))
+        var list = document.getElementById("idList");
+        var elementLi = document.createElement("li");
+        var liText=document.createElement("spam")
+        liText.innerHTML=textInput
+        elementLi.classList.add("list-group-item","d-flex", "justify-content-between","align-items-center");
+        elementLi.appendChild(liText);
+        elementLi.appendChild(deleteButton)
+        list.appendChild(elementLi);
+      }
+      function deleteTask (event){
+        event.target.parentElement.remove()
+      }
+
+
+    </script>
+  </body>
+  <script>
+    
+    //function todo_button(tarefaconcluida) {
+      //var button =createTextNode("tarefa")
+   // }
+
+  </script>
+</html>
